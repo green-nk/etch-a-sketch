@@ -17,9 +17,13 @@ h1 {
 }
 
 div.pad {
-  width: 720px;
-  height: 720px;
+  width: 726px;
+  height: 726px;
   border: 3px solid black;
   display: flex;
   flex-wrap: wrap;
+}
+
+div.cell {
+  border: 1px solid black;
 }
