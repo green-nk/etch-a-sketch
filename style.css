@@ -27,3 +27,7 @@ div.pad {
 div.cell {
   border: 1px solid black;
 }
+
+div.cell.hovered {
+  background-color: #588157;
+}

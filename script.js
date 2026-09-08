@@ -18,3 +18,10 @@ function createGrid() {
         pad.appendChild(cell);
     }
 };
+
+const cells = document.querySelectorAll(".cell");
+cells.forEach((cell) => {
+    cell.addEventListener("mouseenter", () => {
+        cell.classList.add("hovered");
+    });
+});
