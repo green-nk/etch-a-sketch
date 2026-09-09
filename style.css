@@ -16,6 +16,12 @@ h1 {
   margin: 16px 0;
 }
 
+button {
+  margin: 8px 0;
+  padding: 2px;
+  border-radius: 4px;
+}
+
 div.pad {
   width: 726px;
   height: 726px;
