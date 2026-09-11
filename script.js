@@ -1,5 +1,6 @@
 const MIN_GRID_SIZE = 1;
 const MAX_GRID_SIZE = 100;
+const OPACITY_PCT_CHANGE = 0.05;
 
 let mode = "on";
 let numSquaresPerSide = 16;
@@ -7,6 +8,20 @@ let numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
 
 const pad = document.querySelector(".pad");
 createGrid();
+
+const modeBtn = document.querySelector("#mode-btn");
+modeBtn.addEventListener("click", () => {
+    if (mode == "on") {
+        pad.classList.add("disabled");
+        mode = "off";
+    }
+    else {
+        pad.classList.remove("disabled");
+        mode = "on";
+    }
+
+    modeBtn.innerText = `Drawing Mode: ${mode.toUpperCase()}`;
+});
 
 const resetBtn = document.querySelector("#reset-btn");
 resetBtn.addEventListener("click", () => {
@@ -26,20 +41,6 @@ resizeBtn.addEventListener("click", () => {
     createGrid();
 });
 
-const modeBtn = document.querySelector("#mode-btn");
-modeBtn.addEventListener("click", () => {
-    if (mode == "on") {
-        mode = "off";
-        pad.classList.add("disabled");
-    }
-    else {
-        mode = "on";
-        pad.classList.remove("disabled");
-    }
-
-    modeBtn.innerText = `Drawing Mode: ${mode.toUpperCase()}`;
-});
-
 function createGrid() {
     const padSize = pad.clientWidth;
     const squareSize = padSize / numSquaresPerSide;
@@ -52,7 +53,11 @@ function createGrid() {
         cell.style.height = `${squareSize}px`;
         
         cell.addEventListener("mouseenter", () => {
-            cell.classList.add("hovered");
+            if (!cell.classList.contains("hovered")) cell.classList.add("hovered");
+            else {
+                const opacity = +getComputedStyle(cell).opacity;
+                cell.style.opacity = Math.min(opacity + OPACITY_PCT_CHANGE, 1);
+            }
         });
         
         pad.appendChild(cell);

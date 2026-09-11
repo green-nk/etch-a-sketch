@@ -48,4 +48,5 @@ div.cell {
 
 div.cell.hovered {
   background-color: #343a40;
+  opacity: 0.75;
 }
