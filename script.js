@@ -1,6 +1,7 @@
 const MIN_GRID_SIZE = 1;
 const MAX_GRID_SIZE = 100;
 
+let mode = "on";
 let numSquaresPerSide = 16;
 let numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
 
@@ -23,6 +24,20 @@ resizeBtn.addEventListener("click", () => {
 
     removeGrid();
     createGrid();
+});
+
+const modeBtn = document.querySelector("#mode-btn");
+modeBtn.addEventListener("click", () => {
+    if (mode == "on") {
+        mode = "off";
+        pad.classList.add("disabled");
+    }
+    else {
+        mode = "on";
+        pad.classList.remove("disabled");
+    }
+
+    modeBtn.innerText = `Drawing Mode: ${mode.toUpperCase()}`;
 });
 
 function createGrid() {

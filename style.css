@@ -38,6 +38,10 @@ div.pad {
   flex-wrap: wrap;
 }
 
+div.pad.disabled {
+  pointer-events: none;
+}
+
 div.cell {
   border: 1px solid whitesmoke;
 }
