@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #dad7cd;
+  background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,22 +18,25 @@ h1 {
 
 button {
   margin: 8px 0;
-  padding: 2px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #dee2e6;
+  border: 1px solid #e9ecef;
 }
 
 div.pad {
   width: 726px;
   height: 726px;
-  border: 3px solid black;
+  border: 3px solid #212529;
   display: flex;
   flex-wrap: wrap;
 }
 
 div.cell {
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
 }
 
 div.cell.hovered {
-  background-color: #588157;
+  background-color: #343a40;
 }
