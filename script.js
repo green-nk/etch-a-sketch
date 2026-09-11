@@ -7,8 +7,14 @@ let numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
 const pad = document.querySelector(".pad");
 createGrid();
 
-const sizeBtn = document.querySelector("#size-btn");
-sizeBtn.addEventListener("click", () => {
+const resetBtn = document.querySelector("#reset-btn");
+resetBtn.addEventListener("click", () => {
+    const cells = document.querySelectorAll("div.cell.hovered");
+    cells.forEach((cell) => cell.classList.remove("hovered"));
+});
+
+const resizeBtn = document.querySelector("#resize-btn");
+resizeBtn.addEventListener("click", () => {
     do {
         numSquaresPerSide = +prompt(`Enter grid size between ${MIN_GRID_SIZE} and ${MAX_GRID_SIZE}`);
     } while (!validateGridSize(numSquaresPerSide));
