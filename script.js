@@ -4,9 +4,12 @@ let numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
 const pad = document.querySelector(".pad");
 createGrid();
 
-const button = document.querySelector("button");
-button.addEventListener("click", () => {
-    numSquaresPerSide = +prompt("Enter Grid Size (Max 100)");
+const sizeBtn = document.querySelector("#size-btn");
+sizeBtn.addEventListener("click", () => {
+    inp = +prompt("Enter Grid Size (Max 100)");
+    if (!validateGridSize(inp)) alert("Need integer number between 1 and 100");
+
+    numSquaresPerSide = inp;
     numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
     
     removeGrid();
@@ -37,3 +40,7 @@ function removeGrid() {
         pad.removeChild(pad.firstChild);
     }
 };
+
+function validateGridSize(gridSize) {
+    return gridSize && Number.isInteger(gridSize) && gridSize >= 1 && gridSize <= 100;
+}
