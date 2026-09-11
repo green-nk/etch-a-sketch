@@ -1,3 +1,6 @@
+const MIN_GRID_SIZE = 1;
+const MAX_GRID_SIZE = 100;
+
 let numSquaresPerSide = 16;
 let numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
 
@@ -6,12 +9,12 @@ createGrid();
 
 const sizeBtn = document.querySelector("#size-btn");
 sizeBtn.addEventListener("click", () => {
-    inp = +prompt("Enter Grid Size (Max 100)");
-    if (!validateGridSize(inp)) alert("Need integer number between 1 and 100");
-
-    numSquaresPerSide = inp;
-    numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
+    do {
+        numSquaresPerSide = +prompt(`Enter grid size between ${MIN_GRID_SIZE} and ${MAX_GRID_SIZE}`);
+    } while (!validateGridSize(numSquaresPerSide));
     
+    numSquaresTotal = numSquaresPerSide * numSquaresPerSide;
+
     removeGrid();
     createGrid();
 });
@@ -42,5 +45,5 @@ function removeGrid() {
 };
 
 function validateGridSize(gridSize) {
-    return gridSize && Number.isInteger(gridSize) && gridSize >= 1 && gridSize <= 100;
+    return gridSize && Number.isInteger(gridSize) && (gridSize >= MIN_GRID_SIZE && gridSize <= MAX_GRID_SIZE);
 }
